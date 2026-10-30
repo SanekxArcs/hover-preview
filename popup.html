@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Hover Preview</title>
+    <link rel="stylesheet" href="popup.css" />
+    <script src="settings.js" defer></script>
+    <script src="popup.js" defer></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <img src="icons/logo.svg" width="36" height="36" alt="" />
+      <div>
+        <h1>Hover Preview</h1>
+        <p>A little peek. No detour.</p>
+      </div>
+      <span class="version">v1.0</span>
+    </header>
+    <main>
+      <section class="status-card" aria-label="Preview status">
+        <div class="status-copy">
+          <span class="status-title"
+            ><span id="statusDot" class="status-dot"></span
+            ><label for="enabled">Link previews</label></span
+          >
+          <p id="statusText">Ready when you hover</p>
+        </div>
+        <label class="switch"
+          ><input type="checkbox" id="enabled" role="switch" disabled /><span
+            class="switch-track"
+          ></span
+        ></label>
+      </section>
+      <fieldset id="settings" disabled>
+        <legend class="sr-only">Preview preferences</legend>
+        <div class="section-heading">
+          <label for="width">Preview size</label
+          ><output id="sizeVal" for="width">480 × 337</output>
+        </div>
+        <input
+          type="range"
+          id="width"
+          min="320"
+          max="1000"
+          step="10"
+          aria-label="Preview width"
+        />
+        <div class="presets" role="group" aria-label="Size presets">
+          <button type="button" data-width="360" aria-pressed="false">
+            Small
+          </button>
+          <button type="button" data-width="480" aria-pressed="true">
+            Medium
+          </button>
+          <button type="button" data-width="640" aria-pressed="false">
+            Large
+          </button>
+          <button type="button" data-width="860" aria-pressed="false">
+            Wide
+          </button>
+        </div>
+        <div class="mini-preview" aria-hidden="true">
+          <div class="demo-page">
+            <div class="demo-nav"><i></i><i></i><i></i></div>
+            <div class="demo-lines"><i></i><i></i><i></i></div>
+            <div id="demoCard" class="demo-card">
+              <div><span></span><span>example.com</span><span>↗</span></div>
+              <section><i></i><i></i><i></i></section>
+            </div>
+          </div>
+          <span class="demo-caption">The page, without the page switch.</span>
+        </div>
+        <div class="section-heading delay-heading">
+          <label for="delay">Hover delay</label
+          ><output id="delayVal" for="delay">0.5 s</output>
+        </div>
+        <input
+          type="range"
+          id="delay"
+          min="200"
+          max="1500"
+          step="100"
+          aria-label="Hover delay"
+        />
+        <div class="range-labels">
+          <span>Quicker</span><span>More deliberate</span>
+        </div>
+      </fieldset>
+      <p class="hint">
+        <kbd>esc</kbd
+        ><span>Close a preview. Move into it to keep it open.</span>
+      </p>
+      <p id="feedback" role="status" aria-live="polite"></p>
+    </main>
+    <footer>
+      <span>Local settings. No tracking.</span
+      ><button id="reset" type="button" disabled>Reset</button>
+    </footer>
+  </body>
+</html>
